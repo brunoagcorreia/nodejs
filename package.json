@@ -9,9 +9,11 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "bluebird": "^3.7.2",
     "body-parser": "^1.19.0",
     "ejs": "^3.0.1",
     "express": "^4.17.1",
+    "faker": "^4.1.0",
     "save": "^2.4.0",
     "sequelize": "^5.21.2",
     "sequelizer": "^1.1.3",
