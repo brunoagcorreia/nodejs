@@ -27,23 +27,21 @@ app.get('/eingabe', function(req, res){
 
 app.post('/db_input', function(req, res){
     console.log(req.body);
-    // let erg = req.body.vorname
-    // let erg2 = req.body.nachname
-
-    // models.Person.create({			// Eintrag in Tabelle einfügen
-    //     vorname: req.body.vorname,
-    //     nachname: req.body.nachname,
-    //     email: req.body.email,
-    //     })
-
-    for (let i = 1; i <= 20; ++i) {
-        models.Person.create({			// Eintrag in Tabelle einfügen
-            vorname: req.body.vorname,
-            nachname: req.body.nachname,
-            email: req.body.email,
-            iban: req.body.email,
+ 
+    // faker integration
+    for (var i = 1; i <= 20; ++i) {
+        let vn = faker.fake("{{name.firstName}}");
+        let nn = faker.fake("{{name.lastName}}");
+        let em = vn + "." + nn + "@gmail.com";
+        models.Person.create({
+            vorname: vn, 
+            nachname: nn, 
+            email: em.toLowerCase().replace("'", ""),
+            iban: faker.fake("{{finance.iban}}"),
         });
     }
+
+ 
     res.render("db_input", {vorname: req.body.vorname, nachname: req.body.nachname, email: req.body.email})
 });
 
