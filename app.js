@@ -57,8 +57,19 @@ app.get('/db_output', function(req, res){
     }).then(function(obj){
         console.log(obj[0].dataValues.vorname)
         res.render("ausgabe", {person: obj[0].dataValues});
-    });
-        
+    });  
 })
+
+app.get('/db_update', function(req, res){
+    models.Person.findAll({
+        where: {
+            id: 1
+        }
+    }).then(function(obj){
+        console.log(obj[0].dataValues.vorname)
+        res.render("ausgabe", {person: obj[0].dataValues});
+    });  
+})
+
 
 app.listen(8080);

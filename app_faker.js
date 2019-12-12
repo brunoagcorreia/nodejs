@@ -26,16 +26,8 @@ app.get('/eingabe', function(req, res){
 });
 
 app.post('/db_input', function(req, res){
-    console.log(req.body);
-    console.log(faker.fake("{{internet.domainName}}"))
-
-    console.log(faker.fake("{{internet.domainName}}"))
-
-    console.log(faker.fake("{{internet.domainName}}"))
-    console.log(faker.fake("{{internet.domainName}}"))
-
-
-
+    // console.log(req.body);
+    // console.log(faker.fake("{{internet.domainName}}"))
  
     // faker integration
     for (var i = 1; i <= 20; ++i) {
@@ -51,7 +43,7 @@ app.post('/db_input', function(req, res){
     }
 
  
-    res.render("db_input", {vorname: req.body.vorname, nachname: req.body.nachname, email: req.body.email})
+    res.render("result", {vorname: req.body.vorname, nachname: req.body.nachname, email: req.body.email})
 });
 
 app.listen(8080);
