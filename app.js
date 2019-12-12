@@ -56,19 +56,37 @@ app.get('/db_output', function(req, res){
         }
     }).then(function(obj){
         console.log(obj[0].dataValues.vorname)
-        res.render("ausgabe", {person: obj[0].dataValues});
+        res.render("result", {person: obj[0].dataValues});
     });  
 })
 
+
 app.get('/db_update', function(req, res){
-    models.Person.findAll({
+    res.render("update");
+})
+
+app.post('/db_update', function(req, res){
+    let id = req.body.id;
+    console.log(req.body)
+
+    let updateValues = {
+        vorname: req.body.vorname,
+        nachname: req.body.nachname,
+        email: req.body.email,
+    }
+    // let test = {vorname: 'Hans}
+    models.Person.update(updateValues, { where: { id: id} }).then((result) => {
+        console.log(result);
+    })
+    res.send("Update erfolgreich")    
+});
+
+app.get("db_delete", function(req, res){
+    models.Person.destroy({
         where: {
-            id: 1
+            id: 2
         }
-    }).then(function(obj){
-        console.log(obj[0].dataValues.vorname)
-        res.render("ausgabe", {person: obj[0].dataValues});
-    });  
+    })
 })
 
 
