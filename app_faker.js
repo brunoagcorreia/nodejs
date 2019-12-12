@@ -27,12 +27,21 @@ app.get('/eingabe', function(req, res){
 
 app.post('/db_input', function(req, res){
     console.log(req.body);
+    console.log(faker.fake("{{internet.domainName}}"))
+
+    console.log(faker.fake("{{internet.domainName}}"))
+
+    console.log(faker.fake("{{internet.domainName}}"))
+    console.log(faker.fake("{{internet.domainName}}"))
+
+
+
  
     // faker integration
     for (var i = 1; i <= 20; ++i) {
         let vn = faker.fake("{{name.firstName}}");
         let nn = faker.fake("{{name.lastName}}");
-        let em = vn + "." + nn + "@gmail.com";
+        let em = vn + "." + nn + "@" + faker.fake("{{internet.domainName}}");
         models.Person.create({
             vorname: vn, 
             nachname: nn, 
